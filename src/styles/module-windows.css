@@ -1,0 +1,71 @@
+#module-window-holder {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+#module-window {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 500px;
+    padding: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#module-window-header {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#module-window-content {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+#module-window-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#module-window-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#module-window-button img {
+    width: 32px;
+    margin-right: 0.5rem;
+}
+
+.button {
+    background: #F54242;
+    border-radius: 9px;
+    color: #ffffff;
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 150ms linear;
+}
+
+.button:hover {
+    background: #FF2B2B;
+}
