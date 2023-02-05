@@ -21,7 +21,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-        fetch('http://79.137.196.119/flights').then(r => r.json()).then(r => setFlights(r.data))
+        fetch('/api/flights').then(r => r.json()).then(r => setFlights(r.data))
     }, [])
 
 
@@ -82,7 +82,7 @@ export default function Home() {
                             others: others.current?.value,
                             vk: vk.current?.value
                         }
-                        const response = await fetch(`http://79.137.196.119/register?name=${user.name}&age=${user.age}&aircraft=${user.aircraft}&hours=${user.hours}&simulator=${user.simulator}&others=${user.others}&vk=${user.vk}`);
+                        const response = await fetch(`/api/submit?name=${user.name}&age=${user.age}&aircraft=${user.aircraft}&hours=${user.hours}&simulator=${user.simulator}&others=${user.others}&vk=${user.vk}`);
                         const result = await response.json();
                         openWindow('Отправка заявки', result.message);
                     }}>
