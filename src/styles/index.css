@@ -203,3 +203,7 @@ display: flex;
         margin: 20px;
     }
 }
+
+p {
+    text-align: center;
+}
