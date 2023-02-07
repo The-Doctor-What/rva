@@ -1,5 +1,7 @@
 import {Layout} from "../components";
 import {useEffect, useRef, useState} from "react";
+import moment from "moment";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function Home() {
     const [windowOpen, setWindowOpen] = useState(false)
@@ -7,12 +9,23 @@ export default function Home() {
     const [windowContent, setWindowContent] = useState("")
     const name = useRef<any>()
     const age = useRef<any>()
-    const aircraft= useRef<any>()
+    const aircraft = useRef<any>()
     const hours = useRef<any>()
     const simulator = useRef<any>()
     const others = useRef<any>()
     const vk = useRef<any>()
-    const [flights, setFlights] = useState<any[]>([])
+    const [flights, setFlights] = useState<any>({})
+
+    const socials = [
+        {
+            url: "https://discord.gg/u2KaXPMhAT",
+            icon: "discord"
+        },
+        {
+            url: "https://vk.com/vakrossiya",
+            icon: "vk"
+        },
+    ]
 
     function openWindow(title: string, content: string) {
         setWindowOpen(true)
@@ -21,55 +34,70 @@ export default function Home() {
     }
 
     useEffect(() => {
-        fetch('/api/flights').then(r => r.json()).then(r => setFlights(r.data))
+        fetch('/api/flights').then(r => r.json()).then(r => setFlights(r))
     }, [])
 
+    const updated = moment(flights.updated).format('HH:mm')
 
     return (
         <Layout title="Главная">
             <section className="text">
                 <p>
-                    Мы являемся авиационной компанией номер один* уже на протяжении 2 лет и не собираемся это менять.
-                    Тысячи
-                    людей выбирают наши услуги ежедневно.
+                    Мы - виртуальная авиакомпания Россия. Ежедневно мы перевозим более 1000 человек в разные города. Мы
+                    имеем обширный флот от Airbus A319 до Boeing 747-400
                 </p>
-                <p className="bold">
-                    Лидирующая компания в области авиации
-                </p>
+                <div className="bold">
+                    Rossiya Virtual Airline - исполняем ваши мечты
+                    <a href="#reg" className="button">Присоединиться</a>
+                    <a href="https://vk.me/id257708750" className="button">Связаться с нами</a>
+                    <div className="socials">
+                        {socials.map((s, i) => (<>
+                            <a href={s.url} target="_blank" rel="noreferrer" className="social"><i
+                                className={`fa-brands fa-${s.icon}`}/></a>
+                        </>))}
+                    </div>
+                </div>
             </section>
             <section className="bg">
                 <img src="/bg.png" alt="airplane"/>
             </section>
             <section className="flights">
-                <h1><i className="fa-solid fa-plane-departure"></i>⠀Запланированные рейсы</h1>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>PAX</th>
-                        <th>A/C</th>
-                        <th>Dist</th>
-                    </tr>
-                    </thead>
-                    <tbody id="flights">
-                    {flights.map(flight => (
-                        <tr key={flight}>
-                            <td>{flight.departure}</td>
-                            <td>{flight.arrival}</td>
-                            <td>{flight.pax_economy + flight.pax_business + flight.pax_first}</td>
-                            <td>{flight.number}</td>
-                            <td>{flight.dist}nm</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+                {!flights.data ? (<p className="bold big">Запланированных рейсов нет</p>) : (
+                    <>
+                        <p className="bold big"><i className="fa-solid fa-plane-departure"></i>⠀Запланированные рейсы
+                        </p>
+                        <p className="bold"><i className="fa-solid fa-clock"></i>⠀Данные обновлены сегодня в {updated}</p>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>PAX</th>
+                                <th>A/C</th>
+                                <th>Dist</th>
+                            </tr>
+                            </thead>
+                            <tbody id="flights">
+                            {flights.data.map((flight: any) => (
+                                <tr key={flight}>
+                                    <td>{flight.departure}</td>
+                                    <td>{flight.arrival}</td>
+                                    <td>{flight.pax_economy + flight.pax_business + flight.pax_first}</td>
+                                    <td>{flight.number}</td>
+                                    <td>{flight.dist}nm</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </>
+                )}
             </section>
             <section className="bg">
                 <img src="/bg2.png" alt="airplane"/>
             </section>
-            <section className="reg">
-                <p className="bold big">Присоединись к VAK сегодня!</p>
+            <section id="reg">
+                <p className="bold big">Присоединись к ВАК Россия сегодня!</p>
+                <p className="bold">Мы будем рады видеть вас в числе наших пилотов!</p>
                 <form onSubmit={
                     async (e) => {
                         e.preventDefault();
@@ -123,23 +151,26 @@ export default function Home() {
                 </form>
             </section>
             {windowOpen && (
-            <section id="module-window-holder" className="center">
-                <div id="module-window">
-                    <div id="module-window-header">
-                        <p id="module-window-title">{windowTitle}</p>
+                <section id="module-window-holder" className="center">
+                    <div id="module-window">
+                        <div id="module-window-header">
+                            <p id="module-window-title">{windowTitle}</p>
+                        </div>
+                        <div id="module-window-content">
+                            <p id="module-window-message">{windowContent}</p>
+                        </div>
+                        <div id="module-window-footer">
+                            <button id="module-window-button" onClick={() => setWindowOpen(false)} className="button">
+                                <i className="fa-solid fa-xmark" onClick={() => setWindowOpen(false)}> </i>
+                                ⠀Закрыть
+                            </button>
+                        </div>
                     </div>
-                    <div id="module-window-content">
-                        <p id="module-window-message">{windowContent}</p>
-                    </div>
-                    <div id="module-window-footer">
-                        <button id="module-window-button" onClick={() => setWindowOpen(false)} className="button">
-                            <i className="fa-solid fa-xmark" onClick={() => setWindowOpen(false)}> </i>
-                            ⠀Закрыть
-                        </button>
-                    </div>
-                </div>
-            </section>
+                </section>
             )}
+            <footer>
+                <img src={'/vatsim.png'} alt="vatsim" onClick={() => window.open('https://vatsim.net')}/>
+            </footer>
         </Layout>
     )
 }
