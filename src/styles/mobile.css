@@ -1,0 +1,59 @@
+@media (max-width: 768px) {
+    .text p {
+        font-size: 1.5rem;
+        width: 300px;
+        margin: 20px;
+    }
+    .big {
+        font-size: 2.0rem;
+    }
+
+    th, td {
+        width: 100px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .text p {
+        font-size: 1.0rem;
+        width: 200px;
+        margin: 10px;
+    }
+    .big {
+        font-size: 1.5rem;
+    }
+
+    th, td {
+        width: 80px;
+        height: 30px;
+    }
+    form {
+        width: 300px;
+    }
+    table {
+        margin: 30px;
+    }
+}
+
+@media (max-width: 460px) {
+    .text p {
+        font-size: 0.8rem;
+        width: 150px;
+        margin: 5px;
+    }
+    .big {
+        font-size: 1.0rem;
+    }
+
+    th, td {
+        width: 60px;
+        height: 20px;
+    }
+    form {
+        width: 200px;
+    }
+    table {
+        margin: 20px;
+    }
+}

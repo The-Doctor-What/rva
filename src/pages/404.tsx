@@ -5,7 +5,7 @@ import {Layout} from "../components";
 export default function Error404() {
     return (
         <Layout title="Страница не найдена">
-            <div className={"center"}>
+            <div className={"center flex"}>
                 <h1>404</h1>
                 <p>
                     Извините, страница не найдена

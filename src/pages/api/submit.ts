@@ -19,5 +19,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const response = await fetch(`${process.env.API_URL}register?name=${name}&age=${age}&aircraft=${aircraft}&hours=${hours}&simulator=${simulator}&others=${others}&vk=${vk}`)
     const result = await response.json()
 
-    res.status(200).json({message: result.message})
+    res.status(200).json({code: result.code})
 }
