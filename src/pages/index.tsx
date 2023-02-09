@@ -137,31 +137,31 @@ export default function Home() {
                     <p className="small bold">{locale === "ru" ? "Подать заявку" : "Submit application"}</p>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "Ваше имя и фамилия" : "Your name and surname"}</p>
-                        <input type="text" ref={name} placeholder="Saimon Morris" required/>
+                        <input type="text" ref={name} required/>
                     </div>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "Ваш возраст" : "Your age"}</p>
-                        <input type="number" ref={age} placeholder="18" required/>
+                        <input type="number" ref={age} required/>
                     </div>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "На каком типе ВС вы планируете летать в нашей ВАК" : "What type of aircraft do you plan to fly in our VA"}</p>
-                        <input type="text" ref={aircraft} placeholder="767" required/>
+                        <input type="text" ref={aircraft} required/>
                     </div>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "Сколько часов вы летали на этом типе ВС" : "How many hours have you flown on this type of aircraft"}</p>
-                        <input type="number" ref={hours} placeholder="1000" required/>
+                        <input type="number" ref={hours} required/>
                     </div>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "В каком симуляторе вы летаете" : "What simulator do you fly"}</p>
-                        <input type="text" ref={simulator} placeholder="Xplane11" required/>
+                        <input type="text" ref={simulator} required/>
                     </div>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "Летали ли вы раньше в других ВАК? Если да, то в каких" : "Have you flown in other VAs before? If yes, then in which"}</p>
-                        <input type="text" ref={others} placeholder="-"/>
+                        <input type="text" ref={others} required/>
                     </div>
                     <div className="input-holder">
                         <p className="bold">{locale === "ru" ? "Ваша ссылка на ВК" : "Your VK link"}</p>
-                        <input type="text" ref={vk} placeholder="vk.com/durov" required/>
+                        <input type="text" ref={vk} required/>
                     </div>
                     <div className="button-holder">
                         <button type="submit" className="button">
