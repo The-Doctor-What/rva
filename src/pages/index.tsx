@@ -42,6 +42,7 @@ export default function Home() {
 
     return (
         <Layout title={locale === "ru" ? "Главная" : "Home"}>
+
             <section className="text">
                 <p>
                     {locale === "ru" ? `Мы - виртуальная авиакомпания Россия. Ежедневно мы перевозим более 1000 человек в разные города. Мы имеем обширный флот от Airbus A319 до Boeing 747-400` : "We are a virtual airline of Rossiya. We transport more than 1000 people every day to different cities. We have a wide range of aircraft from Airbus A319 to Boeing 747-400"}
@@ -188,9 +189,6 @@ export default function Home() {
                     </div>
                 </section>
             )}
-            <footer>
-                <img src={'/vatsim.png'} alt="vatsim" onClick={() => window.open('https://vatsim.net')}/>
-            </footer>
         </Layout>
     )
 }

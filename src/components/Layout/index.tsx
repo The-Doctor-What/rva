@@ -37,6 +37,7 @@ export default function Layout({children, title}: LayoutProps) {
             <header className={stylesHeader.header}>
                 <div>
                     <img src="/logo.png" alt="logo" className={stylesHeader.logo}/>
+                    <img src={'/vatsim.png'} alt="vatsim" onClick={() => window.open('https://vatsim.net')} className="vatsim"/>
                 </div>
             </header>
             <main className={stylesHeader.main}>
